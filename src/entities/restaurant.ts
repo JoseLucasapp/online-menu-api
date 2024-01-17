@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Address } from "./address";
 
 @Entity()
@@ -16,5 +16,6 @@ export class Restaurant {
     logo: string;
 
     @OneToOne(type => Address, address_id => address_id.id)
-    address_id: Address
+    @JoinColumn()
+    address_id: number
 }
